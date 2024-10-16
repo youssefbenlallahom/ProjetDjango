@@ -46,7 +46,7 @@ class Reservation(models.Model):
             participant=self.participant,
             reservation_date=self.reservation_date
         )
-        if reservation_count >= 3:
+        if reservation_count.count() >= 3:
             raise ValidationError("You can only make up to 3 reservations per day")
     class Meta:
         unique_together=('conference','participant')
