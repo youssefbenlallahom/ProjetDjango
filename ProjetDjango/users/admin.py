@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Participant,Reservation
 # Register your models here.
-class TagInline(admin.TabularInline):
+class ReservationInline(admin.TabularInline):
     model=Reservation
     extra=1
     can_delete=True
@@ -24,7 +24,7 @@ class ParticipantAdmin(admin.ModelAdmin):
             'fields': ('created_at', 'update_at'),
         }),
     )
-    inlines = [TagInline]
+    inlines = [ReservationInline]
     def get_queryset(self, request):
         queryset = super().get_queryset(request)
         print(queryset)
